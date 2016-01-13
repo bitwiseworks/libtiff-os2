@@ -1,4 +1,4 @@
-/* $Id: fax2tiff.c,v 1.19.2.1 2010-06-08 18:50:43 bfriesen Exp $ */
+/* $Id: fax2tiff.c,v 1.24 2015-08-23 15:40:45 bfriesen Exp $ */
 
 /*
  * Copyright (c) 1990-1997 Sam Leffler
@@ -44,6 +44,10 @@
 # include <io.h>
 #endif
 
+#ifdef NEED_LIBPORT
+# include "libport.h"
+#endif
+
 #include "tiffiop.h"
 
 #ifndef EXIT_SUCCESS
@@ -68,11 +72,26 @@ uint32	badfaxlines;
 int	copyFaxFile(TIFF* tifin, TIFF* tifout);
 static	void usage(void);
 
+/*
+  Struct to carry client data.  Note that it does not appear that the client
+  data is actually used in this program.
+*/
+typedef struct _FAX_Client_Data
+{
+#if defined(_WIN32) && defined(USE_WIN32_FILEIO)
+        intptr_t fh; /* Operating system file handle */
+#else
+        int fd;      /* Integer file descriptor */
+#endif
+
+} FAX_Client_Data;
+
 int
 main(int argc, char* argv[])
 {
 	FILE *in;
 	TIFF *out = NULL;
+        FAX_Client_Data client_data;
 	TIFFErrorHandler whandler = NULL;
 	int compression_in = COMPRESSION_CCITTFAX3;
 	int compression_out = COMPRESSION_CCITTFAX3;
@@ -91,9 +110,11 @@ main(int argc, char* argv[])
 	int c;
 	int pn, npages;
 	float resY = 196.0;
+
+#if !HAVE_DECL_OPTARG
 	extern int optind;
 	extern char* optarg;
-
+#endif
 
 	while ((c = getopt(argc, argv, "R:X:o:1234ABLMPUW5678abcflmprsuvwz?")) != -1)
 		switch (c) {
@@ -261,10 +282,11 @@ main(int argc, char* argv[])
 			continue;
 		}
 #if defined(_WIN32) && defined(USE_WIN32_FILEIO)
-                TIFFSetClientdata(faxTIFF, (thandle_t)_get_osfhandle(fileno(in)));
+                client_data.fh = _get_osfhandle(fileno(in));
 #else
-                TIFFSetClientdata(faxTIFF, (thandle_t)fileno(in));
+                client_data.fd = fileno(in);
 #endif
+                TIFFSetClientdata(faxTIFF, (thandle_t) &client_data);
 		TIFFSetFileName(faxTIFF, (const char*)argv[optind]);
 		TIFFSetField(out, TIFFTAG_IMAGEWIDTH, xsize);
 		TIFFSetField(out, TIFFTAG_BITSPERSAMPLE, 1);
@@ -347,7 +369,7 @@ copyFaxFile(TIFF* tifin, TIFF* tifout)
 	uint16 badrun;
 	int ok;
 
-	tifin->tif_rawdatasize = TIFFGetFileSize(tifin);
+	tifin->tif_rawdatasize = (tmsize_t)TIFFGetFileSize(tifin);
 	tifin->tif_rawdata = _TIFFmalloc(tifin->tif_rawdatasize);
 	if (tifin->tif_rawdata == NULL) {
 		TIFFError(tifin->tif_name, "Not enough memory");

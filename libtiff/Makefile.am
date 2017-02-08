@@ -23,6 +23,10 @@
 
 # Process this file with automake to produce Makefile.in.
 
+VENDOR ?=community
+BUILD_INFO=\#\#1\#\# $(shell date +'%d %b %Y %H:%M:%S')     $(shell uname -n)
+BUILDLEVEL_INFO=@\#$(VENDOR):$(LIBTIFF_VERSION)\#@$(BUILD_INFO)::::$(LIBTIFF_MICRO_VERSION)::
+
 LIBPORT = $(top_builddir)/port/libport.la
 LIBTIFF = $(top_builddir)/libtiff/libtiff.la
 libtiffincludedir = $(includedir)
@@ -119,6 +123,7 @@ endif
 
 libtiff_la_LDFLAGS = \
 	-no-undefined \
+	-buildlevel '$(BUILDLEVEL_INFO)' \
 	-version-info $(LIBTIFF_VERSION_INFO)
 if HAVE_RPATH
 libtiff_la_LDFLAGS += $(LIBDIR)

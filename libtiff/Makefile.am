@@ -135,6 +135,7 @@ libtiff_la_LIBADD = $(LIBPORT)
 
 libtiffxx_la_LDFLAGS = \
 	-no-undefined \
+	-buildlevel '$(BUILDLEVEL_INFO)' \
 	-version-info $(LIBTIFF_VERSION_INFO)
 if HAVE_RPATH
 libtiffxx_la_LDFLAGS += $(LIBDIR)

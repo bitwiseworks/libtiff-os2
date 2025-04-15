@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "TIFFFIELDREADCOUNT" "3tiff" "Sep 08, 2023" "4.6" "LibTIFF"
+.TH "TIFFFIELDREADCOUNT" "3tiff" "Sep 11, 2024" "4.7" "LibTIFF"
 .SH NAME
 TIFFFieldReadCount \- get number of values to be read from field
 .SH SYNOPSIS
@@ -61,7 +61,7 @@ pointer \fIdata\fP argument must be supplied to \fI\%TIFFGetField()\fP\&.
 except that the \fIcount\fP argument must have type \fBuint32_t\fP\&.
 .IP \(bu 2
 \fBTIFF_SPP\fP \fB= \-2\fP indicates that the number of arguments is
-equal to the image’s number of samples per pixel.
+equal to the image\(aqs number of samples per pixel.
 .UNINDENT
 .sp
 \fIfip\fP is a field information pointer previously returned by

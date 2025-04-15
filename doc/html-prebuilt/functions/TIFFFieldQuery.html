@@ -3,14 +3,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>TIFFFieldQuery &#8212; LibTIFF 4.6.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <title>TIFFFieldQuery &#8212; LibTIFF 4.7.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b849a4e9" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=0a676766" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=9f25de62"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="TIFFFieldReadCount" href="TIFFFieldReadCount.html" />
@@ -28,7 +28,7 @@
         <li class="right" >
           <a href="TIFFFieldPassCount.html" title="TIFFFieldPassCount"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">LibTIFF 4.6.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LibTIFF 4.7.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../functions.html" accesskey="U">TIFF Functions Overview</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">TIFFFieldQuery</a></li> 
       </ul>
@@ -80,7 +80,7 @@
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="#c.TIFFFieldWithName" title="TIFFFieldWithName"><code class="xref c c-func docutils literal notranslate"><span class="pre">TIFFFieldWithName()</span></code></a> and <a class="reference internal" href="#c.TIFFFieldWithTag" title="TIFFFieldWithTag"><code class="xref c c-func docutils literal notranslate"><span class="pre">TIFFFieldWithTag()</span></code></a>
-return a pointer to TIFF field information structure <cite>fip</cite> by the tag’s
+return a pointer to TIFF field information structure <cite>fip</cite> by the tag's
 <em>field_name</em> or its <em>tag</em> number.</p>
 <p><a class="reference internal" href="#c.TIFFFindField" title="TIFFFindField"><code class="xref c c-func docutils literal notranslate"><span class="pre">TIFFFindField()</span></code></a> searches for the TIFF field information structure
 <cite>fip</cite> of a given <em>tag</em> number and a specific <cite>TIFFDataType dt</cite>.
@@ -99,7 +99,7 @@ currently not support multiple definitions of the same tag.</p>
 <cite>TIFFFindField()</cite>, <cite>TIFFFieldWithTag()</cite>, <cite>TIFFFieldWithName()</cite>.</p>
 <p><a class="reference internal" href="#c.TIFFFieldIsAnonymous" title="TIFFFieldIsAnonymous"><code class="xref c c-func docutils literal notranslate"><span class="pre">TIFFFieldIsAnonymous()</span></code></a> returns true (nonzero) if the field,
 read from file, is unknown to <code class="docutils literal notranslate"><span class="pre">libtiff</span></code> and an anonymous field has
-been auto-registered. Return is zero “0” if field is known to <code class="docutils literal notranslate"><span class="pre">libtiff</span></code>.
+been auto-registered. Return is zero &quot;0&quot; if field is known to <code class="docutils literal notranslate"><span class="pre">libtiff</span></code>.
 See  <a class="reference internal" href="../addingtags.html#tag-auto-registration"><span class="std std-ref">Default Tag Auto-registration</span></a>   for more information.</p>
 <p><a class="reference internal" href="#c.TIFFFieldSetGetSize" title="TIFFFieldSetGetSize"><code class="xref c c-func docutils literal notranslate"><span class="pre">TIFFFieldSetGetSize()</span></code></a> returns the data size in bytes of
 the field data type used for <code class="docutils literal notranslate"><span class="pre">libtiff</span></code> internal storage.
@@ -107,7 +107,7 @@ This is also the data size of the parameter to be provided to
 <a class="reference internal" href="TIFFSetField.html#c.TIFFSetField" title="TIFFSetField"><code class="xref c c-func docutils literal notranslate"><span class="pre">TIFFSetField()</span></code></a> and <a class="reference internal" href="TIFFGetField.html#c.TIFFGetField" title="TIFFGetField"><code class="xref c c-func docutils literal notranslate"><span class="pre">TIFFGetField()</span></code></a>. Custom
 <code class="xref c c-macro docutils literal notranslate"><span class="pre">TIFF_RATIONAL</span></code> values can be stored internally either
 as <code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">double</span></code>. <a class="reference internal" href="#c.TIFFFieldSetGetSize" title="TIFFFieldSetGetSize"><code class="xref c c-func docutils literal notranslate"><span class="pre">TIFFFieldSetGetSize()</span></code></a> would
-then return “4” or “8”, respectively.</p>
+then return &quot;4&quot; or &quot;8&quot;, respectively.</p>
 <p><a class="reference internal" href="#c.TIFFFieldSetGetCountSize" title="TIFFFieldSetGetCountSize"><code class="xref c c-func docutils literal notranslate"><span class="pre">TIFFFieldSetGetCountSize()</span></code></a> returns size of <code class="docutils literal notranslate"><span class="pre">count</span></code> parameter
 of <a class="reference internal" href="TIFFSetField.html#c.TIFFSetField" title="TIFFSetField"><code class="xref c c-func docutils literal notranslate"><span class="pre">TIFFSetField()</span></code></a> and <a class="reference internal" href="TIFFGetField.html#c.TIFFGetField" title="TIFFGetField"><code class="xref c c-func docutils literal notranslate"><span class="pre">TIFFGetField()</span></code></a> and also if it is
 required:  0=none, 2= <code class="xref c c-type docutils literal notranslate"><span class="pre">uint16_t</span></code>, 4= <code class="xref c c-type docutils literal notranslate"><span class="pre">uint32_t</span></code>.
@@ -192,14 +192,14 @@ See also description of <a class="reference internal" href="TIFFFieldReadCount.h
         <li class="right" >
           <a href="TIFFFieldPassCount.html" title="TIFFFieldPassCount"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">LibTIFF 4.6.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LibTIFF 4.7.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../functions.html" >TIFF Functions Overview</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">TIFFFieldQuery</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 1988-2022, LibTIFF contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    &#169; Copyright 1988-2022, LibTIFF contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
     </div>
   </body>
 </html>

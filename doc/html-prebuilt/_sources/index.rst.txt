@@ -10,8 +10,8 @@ LibTIFF - TIFF Library and Utilities
     =====================  =====================================
     Home Page #1           http://www.simplesystems.org/libtiff/
     Home Page #2           https://libtiff.gitlab.io/libtiff/
-    Latest Stable Release  v4.6.0
-    Master Download Site   `download.osgeo.org <https://download.osgeo.org/libtiff/>`_
+    Latest Stable Release  v4.7.0
+    Primary Download Site  `download.osgeo.org <https://download.osgeo.org/libtiff/>`_
     Mailing List           `tiff@lists.osgeo.org <tiff@lists.osgeo.org>`_
     List subscription      http://lists.osgeo.org/mailman/listinfo/tiff/
     List archive           http://www.awaresystems.be/imaging/tiff/tml.html
@@ -34,14 +34,16 @@ your needs for reading and writing TIFF images.
 LibTIFF is portable software, supported on various operating systems including
 UNIX (Linux, BSD, MacOS X) and Windows.
 
-.. warning::
+.. note::
 
-    Starting with libtiff v4.6.0, the source code for most TIFF tools (except tiffinfo,
-    tiffdump, tiffcp and tiffset) was discontinued, due to the lack of contributors
-    able to address reported security issues.
-    It will still be available in the source distribution, but they
-    will no longer be built by default, and issues related to them
-    will no longer be accepted in the libtiff bug tracker.
+    At libtiff v4.6.0, the source code for most TIFF tools (except tiffinfo,
+    tiffdump, tiffcp and tiffset) has been moved to archive/ directory
+    and was not built.
+    tiff2ps and tiff2pdf source code has been moved in a unsupported category,
+    no longer built by default, but were still part of the the source
+    distribution.
+
+    With libtiff v4.7.0 those tools were restored.
 
 
 The following sections are included in this documentation:
@@ -61,5 +63,6 @@ The following sections are included in this documentation:
     addingtags
     tools
     contrib
+    rfcs/index
     project/index
     releases/index

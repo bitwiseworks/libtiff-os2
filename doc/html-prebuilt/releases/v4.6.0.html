@@ -3,18 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Changes in TIFF v4.6.0 &#8212; LibTIFF 4.6.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <title>Changes in TIFF v4.6.0 &#8212; LibTIFF 4.7.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b849a4e9" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=0a676766" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=9f25de62"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Changes in TIFF v4.5.1" href="v4.5.1.html" />
-    <link rel="prev" title="Release history" href="index.html" /> 
+    <link rel="prev" title="Changes in TIFF v4.7.0" href="v4.7.0.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -26,9 +26,9 @@
           <a href="v4.5.1.html" title="Changes in TIFF v4.5.1"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Release history"
+          <a href="v4.7.0.html" title="Changes in TIFF v4.7.0"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">LibTIFF 4.6.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LibTIFF 4.7.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Release history</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Changes in TIFF v4.6.0</a></li> 
       </ul>
@@ -72,13 +72,16 @@ included in the release package and by the Git commit history:</p>
 <p>This version removes a big number of utilities that have suffered from lack
 of maintenance over the years and were the source of various reported
 security issues.
-See “Removed functionality” below for the list of removed utilities.
-Starting with libtiff v4.6.0, their source code, at this time, will still be
-available in the source distribution, but they will no longer be built by
-default, and issues related to them will no longer be accepted in the
-libtiff bug tracker.
-The only remaining supported TIFF tools are tiffinfo, tiffdump, tiffcp,
-tiffset and tiffsplit.</p>
+See &quot;Removed functionality&quot; below for the list of removed utilities.
+Starting with libtiff v4.6.0, the source code for most TIFF tools (except tiffinfo,
+tiffdump, tiffcp and tiffset) was discontinued, due to the lack of contributors
+able to address reported security issues.
+tiff2ps and tiff2pdf source code has been moved in a unsupported category,
+no longer built by default, but are still part of the the source
+distribution. Other retired utilities are in a archive/ directory, only
+available in the libtiff git repository.
+Issues related to unsupported and archived tools will no longer be accepted
+in the libtiff bug tracker.</p>
 </div>
 </section>
 <section id="software-configuration-changes">
@@ -97,12 +100,12 @@ configure.ac has been changed.</p>
 are consistently updated from configure.ac. The version release-date is
 taken from file RELEASE-DATE.</p></li>
 <li><p>The files VERSION and RELEASE-DATE are only updated with a special CMake
-target build: cmake –build . –target tiff_release.</p></li>
+target build: cmake --build . --target tiff_release.</p></li>
 <li><p>For autotools, version information is updated from configure.ac with
 ./autogen.sh. LIBTIFF_RELEASE_DATE is taken form file RELEASE-DATE.</p></li>
 <li><p>./configure generates tiffvers.h with the cached version information and
 LIBTIFF_RELEASE_DATE.</p></li>
-<li><p>“make release” updates tiffvers.h and VERSION file with cached version info
+<li><p>&quot;make release&quot; updates tiffvers.h and VERSION file with cached version info
 and RELEASE-DATE file and tiffves.h with the current date.</p></li>
 </ul>
 </li>
@@ -169,7 +172,7 @@ no longer supported by upstream. Packagers are suggested <em>not</em> to enable 
 options.</p></li>
 <li><p>tiffcp: remove -i option (ignore errors), because almost all
 fuzzer issues were consequential errors from ignored errors because of the
-“-i” option.</p></li>
+&quot;-i&quot; option.</p></li>
 </ul>
 <p>New/improved functionality:</p>
 <ul class="simple">
@@ -187,8 +190,8 @@ signedness. (fixes <a class="reference external" href="https://gitlab.com/libtif
 <h2>Test changes<a class="headerlink" href="#test-changes" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Add missing test_write_read_tags.c and test_transferfunction_write_read.c
-in tarball (fixes <a class="reference external" href="https://gitlab.com/libtiff/libtiff/-/issues/585">issue #585</a>) and correct “long” issue.</p></li>
-<li><p>Don’t use “long” because can be int32_t or int64_t, depending on compiler and
+in tarball (fixes <a class="reference external" href="https://gitlab.com/libtiff/libtiff/-/issues/585">issue #585</a>) and correct &quot;long&quot; issue.</p></li>
+<li><p>Don't use &quot;long&quot; because can be int32_t or int64_t, depending on compiler and
 system.</p></li>
 </ul>
 </section>
@@ -225,8 +228,8 @@ system.</p></li>
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="index.html"
-                          title="previous chapter">Release history</a></p>
+    <p class="topless"><a href="v4.7.0.html"
+                          title="previous chapter">Changes in TIFF v4.7.0</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -264,16 +267,16 @@ system.</p></li>
           <a href="v4.5.1.html" title="Changes in TIFF v4.5.1"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Release history"
+          <a href="v4.7.0.html" title="Changes in TIFF v4.7.0"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">LibTIFF 4.6.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">LibTIFF 4.7.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Release history</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Changes in TIFF v4.6.0</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 1988-2022, LibTIFF contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    &#169; Copyright 1988-2022, LibTIFF contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
     </div>
   </body>
 </html>

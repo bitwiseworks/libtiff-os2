@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "TIFFFIELDQUERY" "3tiff" "Sep 08, 2023" "4.6" "LibTIFF"
+.TH "TIFFFIELDQUERY" "3tiff" "Sep 11, 2024" "4.7" "LibTIFF"
 .SH NAME
 TIFFFieldQuery \- routines to query TIFF field information
 .SH SYNOPSIS
@@ -68,7 +68,7 @@ TIFFFieldQuery \- routines to query TIFF field information
 .SH DESCRIPTION
 .sp
 \fI\%TIFFFieldWithName()\fP and \fI\%TIFFFieldWithTag()\fP
-return a pointer to TIFF field information structure \fIfip\fP by the tag’s
+return a pointer to TIFF field information structure \fIfip\fP by the tag\(aqs
 \fIfield_name\fP or its \fItag\fP number.
 .sp
 \fI\%TIFFFindField()\fP searches for the TIFF field information structure
@@ -94,7 +94,7 @@ The following routines return status information about TIFF fields.
 .sp
 \fI\%TIFFFieldIsAnonymous()\fP returns true (nonzero) if the field,
 read from file, is unknown to \fBlibtiff\fP and an anonymous field has
-been auto\-registered. Return is zero “0” if field is known to \fBlibtiff\fP\&.
+been auto\-registered. Return is zero \(dq0\(dq if field is known to \fBlibtiff\fP\&.
 See  \fI\%Default Tag Auto\-registration\fP   for more information.
 .sp
 \fI\%TIFFFieldSetGetSize()\fP returns the data size in bytes of
@@ -103,7 +103,7 @@ This is also the data size of the parameter to be provided to
 \fI\%TIFFSetField()\fP and \fI\%TIFFGetField()\fP\&. Custom
 \fBTIFF_RATIONAL\fP values can be stored internally either
 as \fBfloat\fP or \fBdouble\fP\&. \fI\%TIFFFieldSetGetSize()\fP would
-then return “4” or “8”, respectively.
+then return \(dq4\(dq or \(dq8\(dq, respectively.
 .sp
 \fI\%TIFFFieldSetGetCountSize()\fP returns size of \fBcount\fP parameter
 of \fI\%TIFFSetField()\fP and \fI\%TIFFGetField()\fP and also if it is
